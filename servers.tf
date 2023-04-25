@@ -15,7 +15,7 @@ resource "aws_instance" "mongodb" {
     Name = "mongodb"
   }
 }
-}
+
 resource "aws_instance" "catalogue" {
   ami           = "ami-0b5a2b5b8f2be4ec2"
   instance_type = "t3.micro"
@@ -24,7 +24,7 @@ resource "aws_instance" "catalogue" {
     Name = "catalogue"
   }
 }
-}
+
 resource "aws_instance" "redis" {
   ami           = "ami-0b5a2b5b8f2be4ec2"
   instance_type = "t3.micro"
@@ -33,7 +33,7 @@ resource "aws_instance" "redis" {
     Name = "redis"
   }
 }
-}
+
 resource "aws_instance" "user" {
   ami           = "ami-0b5a2b5b8f2be4ec2"
   instance_type = "t3.micro"
@@ -42,7 +42,7 @@ resource "aws_instance" "user" {
     Name = "user"
   }
 }
-}
+
 resource "aws_instance" "cart" {
   ami           = "ami-0b5a2b5b8f2be4ec2"
   instance_type = "t3.micro"
@@ -51,7 +51,7 @@ resource "aws_instance" "cart" {
     Name = "cart"
   }
 }
-}
+
 
 resource "aws_instance" "mysql" {
   ami           = "ami-0b5a2b5b8f2be4ec2"
@@ -61,7 +61,7 @@ resource "aws_instance" "mysql" {
     Name = "mysql"
   }
 }
-}
+
 resource "aws_instance" "shipping" {
   ami           = "ami-0b5a2b5b8f2be4ec2"
   instance_type = "t3.micro"
@@ -70,7 +70,7 @@ resource "aws_instance" "shipping" {
     Name = "shipping"
   }
 }
-}
+
 resource "aws_instance" "payment" {
   ami           = "ami-0b5a2b5b8f2be4ec2"
   instance_type = "t3.micro"
@@ -78,5 +78,4 @@ resource "aws_instance" "payment" {
   tags = {
     Name = "payment"
   }
-}
 }
