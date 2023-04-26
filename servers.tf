@@ -4,7 +4,7 @@ data "aws_ami" "centos" {
   name_regex       = "Centos-8-DevOps-Practice"
 
 }
-data "aws_security_group" "selected" {
+data "aws_security_group" "allow-all" {
   name = "allow-all"
 }
 variable "instance_type" {
@@ -94,9 +94,6 @@ resource "aws_route53_record" "user" {
   type    = "A"
   ttl     = 30
   records = [aws_instance.user.private_ip ]
-}
-variable "instance_type"{
-  default=var.instance_type
 }
 
 resource "aws_instance" "cart" {
