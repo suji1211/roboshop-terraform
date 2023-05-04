@@ -14,7 +14,7 @@ resource "null_resource" "provisioner" {
   for_each = var.components
   provisioner "remote-exec" {
 
-  connection = {
+  connection {
     type     = "ssh"
     user     = "centos"
     password = "DevOps321"
