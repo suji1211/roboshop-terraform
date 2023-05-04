@@ -8,6 +8,7 @@ resource "aws_instance" "instance" {
     Name = each.value["name"]
   }
 }
+
 resource "null_resource" "provisioner" {
 
   depends_on = [aws_instance.instance, aws_route53_record.dns_records]
@@ -24,7 +25,7 @@ resource "null_resource" "provisioner" {
     "rm -rf roboshop-shell",
     "git clone https://github.com/suji1211/roboshop-shell",
     "cd roboshop-shell",
-    "sudo bash ${each.value["name"]}.sh ${lookup(each.value, "password","null") }"
+    "sudo bash ${each.value["name"]}.sh ${lookup(each.value, "password", "null") }"
   ]
 }
 
