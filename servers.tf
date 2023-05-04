@@ -24,6 +24,7 @@ provisioner "remote-exec" {
     "sudo bash ${each.value["name"]}.sh"
   ]
 }
+
 }
 resource "aws_route53_record" "dns_records" {
   for_each = var.components
