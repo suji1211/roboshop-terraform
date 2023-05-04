@@ -7,11 +7,28 @@ resource "aws_instance" "instance" {
     tags          = {
       Name = each.value["name"]
     }
+
+
+provisioner "remote-exec" {
+
+  connection = {
+    type     = "ssh"
+    user     = "centos"
+    password = "DevOps321"
+    host     = self.private_ip
   }
+  inline = [
+    "rm -rf roboshop-shell",
+    "git clone https://github.com/suji1211/roboshop-shell",
+    "cd roboshop-shell",
+    "sudo bash ${each.value["name"]}.sh"
+  ]
+}
+}
 resource "aws_route53_record" "dns_records" {
   for_each = var.components
   zone_id = "Z00615461MLF0SCGQYI0V"
-  name    = "${each.value["name"]}.dev.sujianilsrisriyaan.online"
+   name    = "${each.value["name"]}.dev.sujianilsrisriyaan.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.instance[each.value["name"]].private_ip]
