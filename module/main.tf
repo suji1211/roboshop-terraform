@@ -30,7 +30,7 @@ resource "null_resource" "provisioner" {
 }
 resource "aws_route53_record" "dns_records" {
   zone_id = "Z00615461MLF0SCGQYI0V"
-  name    = "${var.component_name}.dev.sujianilsrisriyaan.online"
+  name    = "${var.component_name}-dev.sujianilsrisriyaan.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.instance.private_ip]
