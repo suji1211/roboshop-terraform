@@ -11,14 +11,14 @@ module "servers" {
 
 
 
-#variable "instance_type" {
+#03-vars.yml "instance_type" {
 #  default = "t3.small"
 # }
-# variable "components"{
+# 03-vars.yml "components"{
 #   default = ["frontend", "mongodb", "catalogue","redis","mysql","cart","user","shipping","dispatch","rabbitmq","payment"]
 # }
 
-#variable "records" {
+#03-vars.yml "records" {
 #  default = ["frontend-dev.sujianilsrisriyaan.online", "mongodb-dev.sujianilsrisriyaan.online","catalogue-dev.sujianilsrisriyaan.online","redis-dev.sujianilsrisriyaan.online","mysql-dev.sujianilsrisriyaan.online","cart-dev.sujianilsrisriyaan.online","user-dev.sujianilsrisriyaan.online","shipping-dev.sujianilsrisriyaan.online","dispatch-dev.sujianilsrisriyaan.online","rabbitmq-dev.sujianilsrisriyaan.online","payment-dev.sujianilsrisriyaan.online"]
 #}
 #  resource "aws_instance" "instance" {
