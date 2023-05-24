@@ -11,6 +11,9 @@ resource "aws_instance" "instance" {
 
 resource "null_resource" "provisioner" {
    depends_on = [aws_instance.instance, aws_route53_record.dns_records]
+  triggers = {
+    private_ip = aws_instance.instance.private_ip
+  }
   provisioner "remote-exec" {
 
     connection {
@@ -70,18 +73,16 @@ resource "aws_iam_role_policy" "ssm-ps-policy" {
         "Sid": "VisualEditor0",
         "Effect": "Allow",
         "Action": [
+          "kms:Decrypt",
           "ssm:GetParameterHistory",
           "ssm:GetParametersByPath",
           "ssm:GetParameters",
           "ssm:GetParameter"
         ],
-        "Resource": "arn:aws:ssm:us-east-1:443408281791:parameter/${var.env}.${var.component_name}.*"
-      },
-      {
-        "Sid": "VisualEditor1",
-        "Effect": "Allow",
-        "Action": "ssm:Decrypt",
-        "Resource": "*"
+        "Resource": [
+          "arn:aws:ssm:us-east-1:443408281791:parameter/${var.env}.${var.component_name}.*",
+          "arn:aws:kms:us-east-1:443408281791:key/3629063b-e9b6-4988-a8d4-96cb04b1190c"
+        ]
       }
     ]
   })
