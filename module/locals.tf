@@ -1,11 +1,11 @@
- locals {
-  name = var.env != "" ? "${var.component_name}-${var.env}" : var.component_name
-  db_commands = [
-    "rm -rf roboshop-shell",
-    "git clone https://github.com/suji1211/roboshop-shell",
-    "cd roboshop-shell",
-    "sudo bash ${var.component_name}.sh ${var.password}"
-  ]
+  locals {
+    name = var.env != "" ? "${var.component_name}-${var.env}" : var.component_name
+    db_commands = [
+      "rm -rf roboshop-shell",
+      "git clone https://github.com/suji1211/roboshop-shell",
+      "cd roboshop-shell",
+      "sudo bash ${var.component_name}.sh ${var.password}"
+   ]
 
    app_commands = [
      "sudo labauto ansible",
