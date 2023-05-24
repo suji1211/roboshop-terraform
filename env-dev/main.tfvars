@@ -23,6 +23,12 @@ app_servers = {
     instance_type = "t3.medium"
     password      = "RoboShop@1"
   }
+
+  payment = {
+    name          = "payment"
+    instance_type = "t3.small"
+    password      = "roboshop123"
+  }
 }
   env = "dev"
 
@@ -43,11 +49,6 @@ app_servers = {
     }
     rabbitmq = {
       name          = "rabbitmq"
-      instance_type = "t3.small"
-      password      = "roboshop123"
-    }
-    payment = {
-      name          = "payment"
       instance_type = "t3.small"
       password      = "roboshop123"
     }
