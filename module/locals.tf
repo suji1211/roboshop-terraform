@@ -13,10 +13,10 @@
 
    ]
     db_tags = {
-      name = "${var.component_name}-${var.env}"
+      Name = "${var.component_name}-${var.env}"
     }
     app_tags = {
-      name = "${var.component_name}-${var.env}"
+      Name = "${var.component_name}-${var.env}"
       Monitor = "true"
     }
   }
