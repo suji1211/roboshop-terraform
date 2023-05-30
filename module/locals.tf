@@ -17,5 +17,6 @@
     }
     app_tags = {
       name = "${var.component_name}-${var.env}"
+      Monitor = "true"
     }
   }
