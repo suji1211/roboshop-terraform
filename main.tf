@@ -12,7 +12,7 @@ module "vpc" {
 }
 
 module "docdb" {
-  source = "git::https://github.com/raghudevopsb72/tf-module-docdb.git"
+  source = "git::https://github.com/suji1211/tf-module-docdb.git"
 
   for_each       = var.docdb
   subnets        = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
@@ -30,7 +30,7 @@ module "docdb" {
 
 
 #module "rds" {
-#  source = "git::https://github.com/raghudevopsb72/tf-module-rds.git"
+#  source = "git::https://github.com/suji1211/tf-module-rds.git"
 #
 #  for_each       = var.rds
 #  subnets        = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
@@ -47,7 +47,7 @@ module "docdb" {
 #}
 #
 #module "elasticache" {
-#  source = "git::https://github.com/raghudevopsb72/tf-module-elasticache.git"
+#  source = "git::https://github.com/suji1211/tf-module-elasticache.git"
 #
 #  for_each                = var.elasticache
 #  subnets                 = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
@@ -65,7 +65,7 @@ module "docdb" {
 #}
 #
 #module "rabbitmq" {
-#  source = "git::https://github.com/raghudevopsb72/tf-module-amazon-mq.git"
+#  source = "git::https://github.com/suji1211/tf-module-amazon-mq.git"
 #
 #  for_each      = var.rabbitmq
 #  subnets       = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
@@ -82,7 +82,7 @@ module "docdb" {
 #}
 #
 #module "alb" {
-#  source = "git::https://github.com/raghudevopsb72/tf-module-alb.git"
+#  source = "git::https://github.com/suji1211/tf-module-alb.git"
 #
 #  for_each       = var.alb
 #  subnets        = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)

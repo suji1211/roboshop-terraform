@@ -1,5 +1,9 @@
 env = "dev"
 bastion_cidr     = ["172.31.5.241/32"]
+default_vpc_id = "vpc-0829b8ec902932e18"
+default_vpc_cidr = "172.31.0.0/16"
+default_vpc_rtid = "rtb-067b782018de536a1"
+kms_arn = "arn:aws:kms:us-east-1:443408281791:key/3629063b-e9b6-4988-a8d4-96cb04b1190c"
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
@@ -107,5 +111,59 @@ app = {
     listener_priority = 5
     lb_type           = "private"
     parameters        = []
+  }
+}
+docdb = {
+  main = {
+    subnet_name    = "db"
+    allow_db_cidr  = "app"
+    engine_version = "4.0.0"
+    instance_count = 1
+    instance_class = "db.t3.medium"
+  }
+}
+
+rds = {
+  main = {
+    subnet_name    = "db"
+    allow_db_cidr  = "app"
+    engine_version = "5.7.mysql_aurora.2.11.2"
+    instance_count = 1
+    instance_class = "db.t3.small"
+  }
+}
+
+elasticache = {
+  main = {
+    subnet_name             = "db"
+    allow_db_cidr           = "app"
+    engine_version          = "6.x"
+    replicas_per_node_group = 1
+    num_node_groups         = 1
+    node_type               = "cache.t3.micro"
+  }
+}
+
+rabbitmq = {
+  main = {
+    subnet_name   = "db"
+    allow_db_cidr = "app"
+    instance_type = "t3.small"
+  }
+}
+
+
+alb = {
+  public = {
+    name           = "public"
+    subnet_name    = "public"
+    allow_alb_cidr = null
+    internal       = false
+  }
+  private = {
+    name           = "private"
+    subnet_name    = "app"
+    allow_alb_cidr = "web"
+    internal       = true
   }
 }
