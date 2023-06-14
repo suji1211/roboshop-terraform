@@ -1,15 +1,17 @@
 module "vpc" {
   source = "git::https://github.com/suji1211/tf-module-vpc.git"
 
-  for_each = var.vpc
+  for_each   = var.vpc
   cidr_block = each.value["cidr_block"]
-  subnets = each.value["subnets"]
-  tags = local.tags
-  env = var.env
+  subnets    = each.value["subnets"]
+
+  tags             = local.tags
+  env              = var.env
   default_vpc_id   = var.default_vpc_id
   default_vpc_cidr = var.default_vpc_cidr
   default_vpc_rtid = var.default_vpc_rtid
 }
+
 
 module "docdb" {
   source = "git::https://github.com/suji1211/tf-module-docdb.git"
@@ -96,8 +98,6 @@ module "alb" {
   vpc_id = local.vpc_id
 }
 
-
-
 module "app" {
   depends_on = [module.vpc, module.docdb, module.rds, module.elasticache, module.rabbitmq, module.alb]
   source     = "git::https://github.com/suji1211/tf-module-app.git"
@@ -138,7 +138,7 @@ module "app" {
 #resource "aws_instance" "load" {
 #  ami                    = data.aws_ami.ami.id
 #  instance_type          = "t3.medium"
-#  vpc_security_group_ids = ["sg-0d7376a2c91a5b1ef"]
+#  vpc_security_group_ids = ["sg-0af2e59d56569ff62"]
 #  tags = {
 #    Name = "load-runner"
 #  }
