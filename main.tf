@@ -12,7 +12,6 @@ module "vpc" {
   default_vpc_rtid = var.default_vpc_rtid
 }
 
-
 module "docdb" {
   source = "git::https://github.com/suji1211/tf-module-docdb.git"
 
@@ -23,13 +22,11 @@ module "docdb" {
   instance_count = each.value["instance_count"]
   instance_class = each.value["instance_class"]
 
-
   tags    = local.tags
   env     = var.env
   vpc_id  = local.vpc_id
   kms_arn = var.kms_arn
 }
-
 
 module "rds" {
   source = "git::https://github.com/suji1211/tf-module-rds.git"
@@ -40,7 +37,6 @@ module "rds" {
   engine_version = each.value["engine_version"]
   instance_count = each.value["instance_count"]
   instance_class = each.value["instance_class"]
-
 
   tags    = local.tags
   env     = var.env
