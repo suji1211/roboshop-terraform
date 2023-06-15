@@ -1,9 +1,9 @@
 env = "dev"
 monitor_cidr     = ["172.31.13.80/32"]
 bastion_cidr     = ["172.31.5.241/32"]
-default_vpc_id = "vpc-0829b8ec902932e18"
+default_vpc_id = "vpc-00a9ed66f63811eae"
 default_vpc_cidr = "172.31.0.0/16"
-default_vpc_rtid = "rtb-067b782018de536a1"
+default_vpc_rtid = "rtb-0e04edf8372687e1c"
 kms_arn = "arn:aws:kms:us-east-1:443408281791:key/3629063b-e9b6-4988-a8d4-96cb04b1190c"
 domain_name = "sujianilsrisriyaan.online"
 domain_id = "Z00615461MLF0SCGQYI0V"
